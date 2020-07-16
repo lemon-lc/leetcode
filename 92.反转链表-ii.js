@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=25 lang=javascript
+ * @lc app=leetcode.cn id=92 lang=javascript
  *
- * [25] K 个一组翻转链表
+ * [92] 反转链表 II
  */
 
 // @lc code=start
@@ -9,7 +9,6 @@ function ListNode(val) {
   this.val = val;
   this.next = null;
 }
-
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -19,10 +18,11 @@ function ListNode(val) {
  */
 /**
  * @param {ListNode} head
- * @param {number} k
+ * @param {number} m
+ * @param {number} n
  * @return {ListNode}
  */
-var reverseKGroup = function (head, k) {
+var reverseBetween = function(head, m, n) {
   let left = head
   let stop = false
   const reverse = (right, l, r) => {
@@ -40,20 +40,8 @@ var reverseKGroup = function (head, k) {
       left = left.next
     }
   }
-  let curr = head
-  let count = 0
-  while(curr) {
-    curr = curr.next
-    count++
-  }
-  const index = Math.floor(count / k)
-  for(let i = 0; i < index; i++) {
-    stop = false
-    left = head
-    const start = (i * k) + 1
-    const end = (i + 1) * k
-    reverse(head, start, end)
-  }
-  return head
+  reverse(head, m, n)
+  return head;
 };
 // @lc code=end
+
